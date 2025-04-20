@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Wave</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <input type="text" placeholder="Search Google" class="search-box"/>
+      <ul>
+        <li onclick="window.location.href = 'index.html';"><i class="fa-solid fa-house"></i><span class="title">Home</span></li>
+        <li onclick="window.location.href = 'profile.html';"><i class="fa-solid fa-user"></i><span class="title">Profile</span></li>
+        <li onclick="window.location.href = 'games.html';"><i class="fa-solid fa-gamepad"></i><span class="title">Games</span></li>
+        <li><i class="fa-solid fa-gear"></i><span class="title">Settings</span></li>
+      </ul>
+    </aside>
+
+    <section class="onboarding">
+      <h1>Welcome to <span class="logo-name">Wave</span>!</h1>
+      <h2 id="random-message"></h2>
+      <p>Join our <a onclick="window.location.href = 'https://discord.gg/8GghrPFUPY';" target="_blank" class="discord-link">Discord</a>!</p>
+      <button class="btn">Access Unblocker</button>
+      <p class="import-text">Need an account? <a href="/signup.html" class="sign-up-link">Sign up here!</a></p>
+      <button class="btn outline">useless button</button>
+    </section>
+  </div>
+
+  <div class="wave"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const messages = [
+      "We're so cool",
+      "RAX was here lol",
+      "not topping this lil bro",
+      "👀",
+      "I swear I wasnt snooping in the code",
+      "the other wave is pretty cool I guess",
+      "Uh, so yeah, I get a bunch of girls and I have a ferrari"
+      ];
+    
+      const heading = document.getElementById("random-message");
+    
+      if (heading) {
+        const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+        heading.textContent = randomMessage;
+      } else {
+        console.error("Element #random-message not found.");
+      }
+    });
+    </script>
+    
+</html>

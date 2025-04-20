@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <input type="text" class="search-box" placeholder="Search...">
+            <ul>
+                <li onclick="window.location.href = 'index.html';"><i class="fa-solid fa-house"></i><span class="title">Home</span></li>
+                <li onclick="window.location.href = 'profile.html';"><i class="fa-solid fa-user"></i><span class="title">Profile</span></li>
+                <li onclick="window.location.href = 'settings.html';"><i class="fa-solid fa-gear"></i><span class="title">Settings</span></li>
+                <li onclick="window.location.href = 'logout.html';"><i class="fa-solid fa-sign-out"></i><span class="title">Log Out</span></li>
+            </ul>
+        </aside>
+
+        <section class="onboarding">
+            <div class="profile" style="display: flex; flex-direction: column; align-items: center;">
+                <img id="profile-img" src="profile.jpg" alt="Profile Picture" class="profile-pic">
+                <h1 class="logo-name" id="profile-name">User Profile</h1>
+                <h2 id="welcome-text">Welcome, User</h2>
+                <p id="bio-text"></p>
+            </div>
+
+            <button class="btn" onclick="window.location.href = 'profileedit.html';"><i class="fa-solid fa-user"></i>   Edit Profile</button>
+
+
+            <div class="profile-form" style="opacity: 0; display: none;">
+                <label for="profile-pic">Change Profile Picture:</label>
+                <input type="file" id="profile-pic" accept="image/*">
+
+                <label for="name">Name:</label>
+                <input type="text" id="name" placeholder="Enter your name" oninput="autoSave()">
+
+                <label for="bio">Bio:</label>
+                <input type="text" id="bio" placeholder="Enter your bio" oninput="autoSave()">
+            </div>
+        </section>
+    </div>
+
+    <div class="wave"></div>
+
+    <script>
+        function autoSave() {
+            const name = document.getElementById('name').value;
+            const bio = document.getElementById('bio').value;
+            const imageInput = document.getElementById('profile-pic');
+            let imageData = localStorage.getItem('profileImage') || '';
+
+            if (imageInput.files.length > 0) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    imageData = event.target.result;
+                    localStorage.setItem('profileImage', imageData);
+                    document.getElementById('profile-img').src = imageData;
+                };
+                reader.readAsDataURL(imageInput.files[0]);
+            }
+
+            const profileData = { name, bio };
+            localStorage.setItem('userProfile', JSON.stringify(profileData));
+        }
+
+        function loadProfile() {
+            const profileData = JSON.parse(localStorage.getItem('userProfile'));
+
+            if (profileData) {
+                document.getElementById('name').value = profileData.name || '';
+                document.getElementById('bio').value = profileData.bio || '';
+                document.getElementById('profile-name').textContent = profileData.name || 'User Profile';
+                document.getElementById('welcome-text').textContent = `Welcome, ${profileData.name || 'User'}`;
+                document.getElementById('bio-text').textContent = profileData.bio || 'Web Developer | Tech Enthusiast';
+                      window.onload = 
+                document.querySelector(".profile").style.display = "flex";
+                document.querySelector(".profile").classList.add("fade-in");
+            }
+
+            const profileImage = localStorage.getItem('profileImage');
+            if (profileImage) {
+                document.getElementById('profile-img').src = profileImage;
+            }
+        }
+        window.onload = loadProfile;
+    </script>
+</body>
+</html>

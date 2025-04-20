@@ -1,0 +1,27 @@
+[
+    {
+      "name": "Amazing Strange Rope Police",
+      "image": "games/asrp/amazing-strange-rope-police-vice-spider-vegas.jpg",
+      "description": "OOOOHHHHH SPIDERMANNNN",
+      "link": "/games/asrp/index.html"
+    },
+    {
+      "name": "Slope",
+      "image": "games/slope/slope4.jpeg",
+      "description": "Roll ball down slope.",
+      "link": "/games/slope/index.html"
+    },
+    {
+      "name": "Backrooms",
+      "image": "games/Backrooms/img/splash.jpg",
+      "description": "Test your skills with puzzles.",
+      "link": "/games/Backrooms/index.html"
+    },
+    {
+      "name": "2048",
+      "image": "games/2048/2048.png",
+      "description": "Combine to get 2048",
+      "link": "/games/2048/index.html"
+    }
+  ]
+  
