@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+
+    <link rel="stylesheet" href="Profile.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script defer src="countdown.js"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <input type="text" class="search-box" placeholder="Search...">
+            <ul>
+                <li onclick="window.location.href = 'index.html';"><i class="fa-solid fa-house"></i><span class="title">Home</span></li>
+                <li onclick="window.location.href = 'profile.html';"><i class="fa-solid fa-user"></i><span class="title">Profile</span></li>
+                <li onclick="window.location.href = 'settings.html';"><i class="fa-solid fa-gear"></i><span class="title">Settings</span></li>
+                <li onclick="window.location.href = 'logout.html';"><i class="fa-solid fa-sign-out"></i><span class="title">Log Out</span></li>
+            </ul>
+        </aside>
+
+        <section class="edit-profile" style="margin-left: 20%;">
+            <h1>Edit Your Profile</h1>
+
+
+            <label for="profile-pic">Change Profile Picture:</label>
+            <input type="file" id="profile-pic" accept="image/*">
+            <img id="preview-img" class="profile-pic" style="display: none;">
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Enter your name">
+
+            <label for="bio">Bio:</label>
+            <input type="text" id="bio" placeholder="Enter your bio">
+
+            <button onclick="saveProfile()">Save Changes</button>
+            <button onclick="window.location.href = 'profile.html';">Cancel</button>
+        </section>
+    </div>
+
+    <script>
+
+        function loadProfileData() {
+            const profileData = JSON.parse(localStorage.getItem('userProfile'));
+
+            if (profileData) {
+                document.getElementById('name').value = profileData.name || '';
+                document.getElementById('bio').value = profileData.bio || '';
+
+                const profileImage = localStorage.getItem('profileImage');
+                if (profileImage) {
+                    document.getElementById('preview-img').src = profileImage;
+                    document.getElementById('preview-img').style.display = 'block';
+                }
+            }
+        }
+
+   
+        function saveProfile() {
+            const name = document.getElementById('name').value;
+            const bio = document.getElementById('bio').value;
+            const imageInput = document.getElementById('profile-pic');
+            let imageData = localStorage.getItem('profileImage') || '';
+
+            if (imageInput.files.length > 0) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    imageData = event.target.result;
+                    localStorage.setItem('profileImage', imageData);
+                };
+                reader.readAsDataURL(imageInput.files[0]);
+            }
+
+            const profileData = { name, bio };
+            localStorage.setItem('userProfile', JSON.stringify(profileData));
+
+            window.location.href = `profile.html`;
+        }
+
+     
+        window.onload = loadProfileData;
+    </script>
+</body>
+</html>

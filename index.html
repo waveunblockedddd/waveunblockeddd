@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <title>Wave</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+  <script defer src="RandomText.js"></script>
+  <script defer src="setting.js"></script>
+ <script defer src="switcher.js"></script>
+  <script defer src="countdown.js"></script>
+ <link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="default.css" id="theme-default" />
+<link rel="stylesheet" href="dark.css" id="theme-dark" disabled />
+<link rel="stylesheet" href="light.css" id="theme-light" disabled />
+<link rel="stylesheet" href="matrix.css" id="theme-matrix" disabled />
+<link rel="stylesheet" href="vortex.css" id="theme-vortex" disabled />
+
+</head>
+<body>
+  
+<div id="countdown-overlay">
+  <div class="countdown-container">
+    <h1>🚀 Launching In</h1>
+    <div class="countdown-timer">
+      <div><span id="days">00</span><label>Days</label></div>
+      <div><span id="hours">00</span><label>Hours</label></div>
+      <div><span id="minutes">00</span><label>Minutes</label></div>
+      <div><span id="seconds">00</span><label>Seconds</label></div>
+    </div>
+    <div class="discord-cta">
+      <p>Stay updated & chat with us!</p>
+      <a href="https://discord.gg/8GghrPFUPY" target="_blank" class="discord-button">
+        Join Our Discord
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="custom-cursor" id="customCursor"></div>
+
+
+  <div class="container">
+    <aside class="sidebar" aria-label="Sidebar navigation">
+      <div class="search-wrap">
+        <input type="text" class="search-box" placeholder="Search Google…" />
+        <span class="underline"></span>
+      </div>
+      <nav class="nav-list">
+        <button data-link="index.html"><i class="fa-solid fa-house"></i> Home</button>
+        <button data-link="games.html"><i class="fa-solid fa-gamepad"></i> Games</button>
+        <button data-link="profile.html"><i class="fa-solid fa-user"></i> Profile</button>
+        <button><i class="fa-solid fa-folder"></i> Folder</button>
+        <button id="settings-btn"><i class="fa-solid fa-gear"></i> Settings</button>
+      </nav>
+    </aside>
+
+
+    <main class="onboarding fade-in" id="main-content">
+      <h1 class="typing">Welcome to <span class="logo-name">Wave</span>!</h1>
+      <h2 id="random-message"></h2>
+      <p>
+        Join our <a href="https://discord.gg/8GghrPFUPY" target="_blank" class="discord-link">Discord</a>!
+      </p>
+      <div class="btn-group">
+        <a href="/proxy.html" class="btn primary">Access Unblocker</a>
+        <a href="/signup.html" class="btn outline">Sign Up</a>
+      </div>
+    </main>
+
+    <main class="settings-panel" id="settings-panel">
+      <h2>Settings</h2>
+      <div class="setting-section">
+        <label for="theme-select">Select Theme</label>
+        <select id="theme-select">
+          <option value="default">Default</option>
+          <option value="dark">Dark Mode</option>
+          <option value="light">Light Mode</option>
+          <option value="matrix">Matrix</option>
+        </select>
+        <button id="reset-theme-btn" class="btn outline">Reset to Default</button>
+
+      </div>
+
+      <div class="collab-themes">
+        <h3>Collab Themes</h3>
+        <div class="collab-grid">
+          <div class="collab-card" data-theme="vortex">
+            <div class="theme-item">
+              <h4>Vortex</h4>
+                <div class="tooltip-text">
+                  Made by Evicly the owner of Vortex
+                </div>
+              </div>
+
+            <p>A Collab with Vortex</p>
+          </div>
+
+          <div class="collab-card" data-theme="">
+            <div class="theme-item">
+              <h4>GLSeriesDev</h4>
+                <div class="tooltip-text">
+                  Made by q8j and Marki the owner of GLSeriesDev
+                </div>
+              </div>
+            <p>A Collab with GLSeriesDev</p>
+          </div>
+
+          <div class="collab-card" data-theme="">
+            <div class="theme-item">
+              <h4>Alexr Network</h4>
+                <div class="tooltip-text">
+                  Made by wiisupotsu900 the owner of Alexr Network
+                </div>
+              </div>
+            <p>A Collab with Alexr Network</p>
+          </div>
+        </div>
+        
+      </div>
+      
+    </main>
+    
+  </div>
+
+  <div class="wave"></div>
+  
+</body>
+
+
+</html>
